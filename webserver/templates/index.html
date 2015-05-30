@@ -1,0 +1,57 @@
+<!-- Server side event (SSE) graphing !-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="static/bower_components/rickshaw/rickshaw.css">
+
+    <!-- JS -->
+    <script type="text/javascript" src="static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="static/bower_components/rickshaw/vendor/d3.min.js"></script>
+    <script type="text/javascript" src="static/bower_components/rickshaw/vendor/d3.layout.min.js"></script>
+    <script type="text/javascript" src="static/bower_components/rickshaw/rickshaw.min.js"></script>
+    <script type="text/javascript" src="static/js/Rickshaw.Series.Sliding.js"></script>
+
+</head>
+
+<body>
+<h1>Server sent events + Rickshaw + Flask</h1>
+
+<div id="chart"></div>
+
+<script type="text/javascript">
+// Generate a graph
+var graph = new Rickshaw.Graph( {
+	element: document.getElementById("chart"),
+	width: 540,
+	height: 240,
+	renderer: 'line',
+	series: new Rickshaw.Series.Sliding([{ name: 'mySeries'}], undefined, {
+		maxDataPoints: 100,
+	})
+} );
+
+// Render the graph
+graph.render();
+
+// Create a new EventSource
+var evtSrc = new EventSource("/stream");
+
+// Handle receiving data
+var count = 0;
+evtSrc.onmessage = function(e) {
+	var obj = JSON.parse(e.data);
+	// New data is entered as ({seriesKey: yval, ...}, xval)
+	graph.series.addData(obj.series, obj.x);
+	graph.render();
+	count += 1;
+};
+
+// Would be possible to attach event handlers to do things like modify graphs...
+
+</script>
+</body>
+</html>
