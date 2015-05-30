@@ -1,8 +1,9 @@
 # Server Sent Events, Rickshaw, and Flask for Real Time Graphing
 
-This isn't particularly hard to do in and of itself, it's just that there's a labryinth of features, framesworks, and technologies to contend with that all seem to drown each other out.
-So after trying to use a couple of things that seemed to promise "all-in-one" functionality, I found it was just easier to glue a few things together, and it seems to work reasonably well.
-
+Use a handful of relatively robust frameworks to graph streams of data in your 
+web browser.
+Inspired by the fact that I needed to check some sensor readings on my robots, 
+even when they won't stay still for long enough for me to connect an HDMI cable.
 
 # Running The Demo
 
@@ -22,7 +23,19 @@ aesthetic issue, just fork the repo and make your own modifications.
 
 # Neutral Summary
 
-## New Rickshaw Series
+This isn't particularly hard to do in and of itself, it's just that there's a labryinth of features, framesworks, and technologies to contend with that all seem to drown each other out.
+So after trying to use a couple of things that seemed to promise "all-in-one" functionality, I found it was just easier to glue a few things together, and it seems to work reasonably well.
+
+## Flask
+
+Flask supports what I'm trying to do, and is very fast to prototype with.
+
+## Rickshaw
+
+Rickshaw allows you to make and animate graphs in the browser, and there are a 
+number of examples out there that *almost* did what I wanted to do
+
+### New Rickshaw Series
 
 I created a subclass of `Rickshaw.Series` in order to better understand what's going on,
 and also because I wanted to make a few small modifications.
@@ -33,6 +46,10 @@ The downside is that your graph may thrash about resizing itself as data comes
 in, but this can be fixed by filling in default values yourself before starting
 the stream.
 
+## Server Side Events
+
+An experimental yet well-supported feature that allows for streaming data 
+without having to rely on still more frameworks.
 
 # Opinionated Writeup
 
