@@ -30,10 +30,14 @@ So after trying to use a couple of things that seemed to promise "all-in-one" fu
 
 Flask supports what I'm trying to do, and is very fast to prototype with.
 
+http://flask.pocoo.org/
+
 ## Rickshaw
 
 Rickshaw allows you to make and animate graphs in the browser, and there are a 
 number of examples out there that *almost* did what I wanted to do
+
+http://code.shutterstock.com/rickshaw/
 
 ### New Rickshaw Series
 
@@ -51,20 +55,23 @@ the stream.
 An experimental yet well-supported feature that allows for streaming data 
 without having to rely on still more frameworks.
 
+https://developer.mozilla.org/en-US/docs/Server-sent_events/Using_server-sent_events
+
 # Opinionated Writeup
 
 ## Remarks
 
 ### Why is there an opinionated writeup? 
+
 Well, I originally wrote a bunch of stuff down for future-me while I was trying
-to get this to work, and then after it was working, my desire to modify the
-tone.
+to get this to work, and then after it was working, I wanted to just get this out
+there to maybe save other people time.
+Most of my frustration was due to the fact that despite there being such a 
+vibrant ecosystem of web software, such an obvious use of that software was 
+so tedious to actually implement.
 In the end, it's not *that* opinionated, but there are parts where frustration 
 or confusion might be taken as an invitation to start a flame war. 
 
-I wrote this for a personal project, using a hodge-podge of information from
-the Internet, but I thought it might help people who were as bewildered (as I was a
-few hours ago) by how something so apparently simple was so hard to *actually do*.
 Additionally, I am not 100% certain about the licensing situation, so if you're
 planning to use this demo as the basis of a globe-spanning realtime graphing 
 corporate juggernaut, you should probably reimplement 
