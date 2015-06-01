@@ -31,9 +31,6 @@ app = Flask(__name__)
 
 @app.route('/static/<path:path>')
 def send_js(path):
-    print(os.path.join('static', path))
-    if not os.path.isfile(os.path.join('static', path)):
-        print('aaaa')
     return send_from_directory('static', path)
 
 
